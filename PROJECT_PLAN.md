@@ -1,13 +1,14 @@
-# Brazil Road Safety Analytics
+# Análise de Segurança Viária no Brasil
 
-Managed DataLab project using **PRF** as its registered data source.
+Projeto gerenciado pelo DataLab usando **PRF** como fonte de dados registrada.
 
-## Analytical contract
+## Contrato analítico
 
-- Validate data quality before statistical conclusions.
-- Distinguish association from causality.
-- Document missing data, assumptions, uncertainty and limitations.
-- Prefer reproducible pipelines and tests over manual transformations.
-- Publish validated analytical outputs through GitHub Pages.
+- Validar a qualidade dos dados antes de qualquer conclusão estatística.
+- Distinguir associação de causalidade.
+- Documentar dados ausentes, premissas, incertezas e limitações.
+- Preferir pipelines reproduzíveis e testes a transformações manuais.
+- Publicar resultados analíticos validados por meio do GitHub Pages.
+- Manter documentação, mensagens operacionais e commits em português do Brasil.
 
-The repository is managed by `DatalabMp/datalab-controller`.
+O repositório é gerenciado por `DatalabMp/datalab-controller`.
