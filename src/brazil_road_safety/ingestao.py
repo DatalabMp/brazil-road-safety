@@ -24,7 +24,7 @@ class ResultadoIngestao:
 def baixar_bytes(url: str, timeout: int = 60) -> bytes:
     """Baixa uma fonte pública sem autenticação e retorna seus bytes."""
     requisicao = Request(url, headers={"User-Agent": "DatalabMp-brazil-road-safety/0.1"})
-    with urlopen(requisicao, timeout=timeout) as resposta:  # noqa: S310
+    with urlopen(requisicao, timeout=timeout) as resposta:
         return resposta.read()
 
 
