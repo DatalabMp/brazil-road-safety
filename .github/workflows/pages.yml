@@ -1,4 +1,4 @@
-name: Publish Dashboard
+name: Publicar dashboard
 
 on:
   push:
@@ -18,16 +18,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  publicar:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
+      - name: Baixar repositório
+        uses: actions/checkout@v5
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Preparar artefato
+        uses: actions/upload-pages-artifact@v4
         with:
           path: docs
-      - id: deployment
+      - name: Publicar
+        id: deployment
         uses: actions/deploy-pages@v4
