@@ -1,4 +1,7 @@
-from brazil_road_safety.fontes import FONTE_ACIDENTES_2025, PAGINA_DADOS_ABERTOS_PRF
+from brazil_road_safety.fontes import (
+    FONTE_ACIDENTES_2025,
+    PAGINA_DADOS_ABERTOS_PRF,
+)
 
 
 def test_fonte_2025_preserva_identidade_publicada_pela_prf() -> None:
