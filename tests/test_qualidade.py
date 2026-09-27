@@ -60,3 +60,11 @@ def test_reprova_contagem_negativa() -> None:
     relatorio = avaliar_qualidade(dados, 2025)
     assert not relatorio.aprovado
     assert relatorio.valores_negativos["mortos"] == 1
+
+
+def test_reprova_contagem_nao_numerica() -> None:
+    dados = _dados_validos()
+    dados.loc[0, "feridos"] = "desconhecido"
+    relatorio = avaliar_qualidade(dados, 2025)
+    assert not relatorio.aprovado
+    assert relatorio.valores_nao_numericos["feridos"] == 1
