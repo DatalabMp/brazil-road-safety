@@ -81,9 +81,11 @@ def avaliar_qualidade(dados: pd.DataFrame, ano_esperado: int) -> RelatorioQualid
         valores_negativos[coluna] = int((numerico < 0).sum())
         valores_fracionarios[coluna] = int((numerico.notna() & (numerico % 1 != 0)).sum())
 
+    ids_ausentes = ausencias.get("id", 0)
     aprovado = bool(
         len(dados) > 0
         and not colunas_ausentes
+        and ids_ausentes == 0
         and duplicidades_id == 0
         and datas_invalidas == 0
         and datas_fora_do_ano == 0
