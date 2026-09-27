@@ -35,6 +35,14 @@ def test_reprova_coluna_obrigatoria_ausente() -> None:
     assert relatorio.colunas_ausentes == ["id"]
 
 
+def test_reprova_id_ausente() -> None:
+    dados = _dados_validos()
+    dados.loc[0, "id"] = None
+    relatorio = avaliar_qualidade(dados, 2025)
+    assert not relatorio.aprovado
+    assert relatorio.ausencias["id"] == 1
+
+
 def test_reprova_id_duplicado() -> None:
     dados = pd.concat([_dados_validos(), _dados_validos()], ignore_index=True)
     relatorio = avaliar_qualidade(dados, 2025)
