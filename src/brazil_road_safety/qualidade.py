@@ -48,6 +48,7 @@ class RelatorioQualidade:
     datas_invalidas: int
     datas_fora_do_ano: int
     ausencias: dict[str, int]
+    valores_nao_numericos: dict[str, int]
     valores_negativos: dict[str, int]
 
     def como_dict(self) -> dict[str, Any]:
@@ -70,9 +71,11 @@ def avaliar_qualidade(dados: pd.DataFrame, ano_esperado: int) -> RelatorioQualid
         datas_invalidas = int(datas.isna().sum())
         datas_fora_do_ano = int((datas.dropna().dt.year != ano_esperado).sum())
 
+    valores_nao_numericos: dict[str, int] = {}
     valores_negativos: dict[str, int] = {}
     for coluna in sorted(COLUNAS_CONTAGEM & set(dados.columns)):
         numerico = pd.to_numeric(dados[coluna], errors="coerce")
+        valores_nao_numericos[coluna] = int((dados[coluna].notna() & numerico.isna()).sum())
         valores_negativos[coluna] = int((numerico < 0).sum())
 
     aprovado = bool(
@@ -81,6 +84,7 @@ def avaliar_qualidade(dados: pd.DataFrame, ano_esperado: int) -> RelatorioQualid
         and duplicidades_id == 0
         and datas_invalidas == 0
         and datas_fora_do_ano == 0
+        and not any(valores_nao_numericos.values())
         and not any(valores_negativos.values())
     )
 
@@ -92,5 +96,6 @@ def avaliar_qualidade(dados: pd.DataFrame, ano_esperado: int) -> RelatorioQualid
         datas_invalidas=datas_invalidas,
         datas_fora_do_ano=datas_fora_do_ano,
         ausencias=ausencias,
+        valores_nao_numericos=valores_nao_numericos,
         valores_negativos=valores_negativos,
     )
