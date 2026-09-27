@@ -68,3 +68,11 @@ def test_reprova_contagem_nao_numerica() -> None:
     relatorio = avaliar_qualidade(dados, 2025)
     assert not relatorio.aprovado
     assert relatorio.valores_nao_numericos["feridos"] == 1
+
+
+def test_reprova_contagem_fracionaria() -> None:
+    dados = _dados_validos()
+    dados.loc[0, "veiculos"] = 1.5
+    relatorio = avaliar_qualidade(dados, 2025)
+    assert not relatorio.aprovado
+    assert relatorio.valores_fracionarios["veiculos"] == 1
