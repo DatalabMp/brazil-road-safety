@@ -2,9 +2,7 @@ from io import BytesIO
 from zipfile import ZipFile
 
 import pytest
-
 from brazil_road_safety.ingestao import ler_csv_prf
-
 
 CSV = b"id;data_inversa;uf\n1;2025-01-01;DF\n2;2025-01-02;GO\n"
 
