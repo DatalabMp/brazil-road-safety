@@ -2,6 +2,7 @@ from io import BytesIO
 from zipfile import ZipFile
 
 import pytest
+
 from brazil_road_safety.ingestao import ler_csv_prf
 
 
