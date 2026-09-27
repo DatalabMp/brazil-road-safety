@@ -50,6 +50,7 @@ class RelatorioQualidade:
     ausencias: dict[str, int]
     valores_nao_numericos: dict[str, int]
     valores_negativos: dict[str, int]
+    valores_fracionarios: dict[str, int]
 
     def como_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -73,10 +74,12 @@ def avaliar_qualidade(dados: pd.DataFrame, ano_esperado: int) -> RelatorioQualid
 
     valores_nao_numericos: dict[str, int] = {}
     valores_negativos: dict[str, int] = {}
+    valores_fracionarios: dict[str, int] = {}
     for coluna in sorted(COLUNAS_CONTAGEM & set(dados.columns)):
         numerico = pd.to_numeric(dados[coluna], errors="coerce")
         valores_nao_numericos[coluna] = int((dados[coluna].notna() & numerico.isna()).sum())
         valores_negativos[coluna] = int((numerico < 0).sum())
+        valores_fracionarios[coluna] = int((numerico.notna() & (numerico % 1 != 0)).sum())
 
     aprovado = bool(
         len(dados) > 0
@@ -86,6 +89,7 @@ def avaliar_qualidade(dados: pd.DataFrame, ano_esperado: int) -> RelatorioQualid
         and datas_fora_do_ano == 0
         and not any(valores_nao_numericos.values())
         and not any(valores_negativos.values())
+        and not any(valores_fracionarios.values())
     )
 
     return RelatorioQualidade(
@@ -98,4 +102,5 @@ def avaliar_qualidade(dados: pd.DataFrame, ano_esperado: int) -> RelatorioQualid
         ausencias=ausencias,
         valores_nao_numericos=valores_nao_numericos,
         valores_negativos=valores_negativos,
+        valores_fracionarios=valores_fracionarios,
     )
