@@ -13,7 +13,15 @@ def test_le_csv_com_separador_oficial() -> None:
     assert resultado.arquivo_origem == "datatran2025.csv"
     assert resultado.dados.shape == (2, 3)
     assert resultado.dados["uf"].tolist() == ["DF", "GO"]
+    assert resultado.encoding == "utf-8-sig"
     assert len(resultado.sha256) == 64
+
+
+def test_le_csv_latin1_sem_corromper_acentos() -> None:
+    csv_latin1 = "id;causa_acidente\n1;Colisão\n".encode("latin1")
+    resultado = ler_csv_prf(csv_latin1, "datatran2025.csv")
+    assert resultado.encoding == "latin1"
+    assert resultado.dados["causa_acidente"].tolist() == ["Colisão"]
 
 
 def test_le_zip_com_um_csv() -> None:
