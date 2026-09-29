@@ -9,7 +9,7 @@ def resumo_descritivo(dados: pd.DataFrame) -> dict[str, object]:
     """Calcula indicadores estritamente descritivos do conjunto validado."""
     datas = pd.to_datetime(dados["data_inversa"])
     return {
-        "ocorrencias": int(len(dados)),
+        "ocorrencias": len(dados),
         "mortos": int(pd.to_numeric(dados["mortos"]).sum()),
         "feridos": int(pd.to_numeric(dados["feridos"]).sum()),
         "feridos_graves": int(pd.to_numeric(dados["feridos_graves"]).sum()),
