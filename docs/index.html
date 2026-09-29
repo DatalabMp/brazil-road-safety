@@ -3,13 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Análise de Segurança Viária no Brasil</title>
+  <meta name="description" content="Painel exploratório de acidentes em rodovias federais registrados pela PRF em 2025.">
+  <title>Segurança Viária no Brasil — PRF 2025</title>
+  <style>
+    :root{color-scheme:dark;--bg:#08111f;--panel:#111d2e;--muted:#9fb0c6;--text:#eef5ff;--accent:#69b7ff;--line:#24364d;--ok:#73d99c}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}main{max-width:1180px;margin:auto;padding:32px 20px 64px}h1{font-size:clamp(2rem,5vw,3.6rem);margin:.2em 0}h2{margin-top:42px}.sub,.nota{color:var(--muted);line-height:1.6}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:26px 0}.card,.chart{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}.valor{font-size:1.8rem;font-weight:750}.rotulo{color:var(--muted);font-size:.9rem}.bars{display:grid;gap:10px}.bar{display:grid;grid-template-columns:minmax(90px,170px) 1fr 70px;gap:10px;align-items:center}.track{height:12px;background:#1b2a3d;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--accent);border-radius:10px}.meses{display:grid;grid-template-columns:repeat(12,1fr);gap:7px;align-items:end;height:190px;padding-top:20px}.mes{text-align:center;color:var(--muted);font-size:.72rem}.col{background:var(--accent);border-radius:6px 6px 2px 2px;min-height:4px}.status{display:inline-block;padding:6px 10px;border-radius:999px;background:#153323;color:var(--ok);font-weight:700;font-size:.8rem}code{word-break:break-all;color:#cfe6ff}@media(max-width:650px){.bar{grid-template-columns:100px 1fr 55px}.meses{gap:3px}.mes{font-size:.6rem}}
+  </style>
 </head>
-<body>
-  <main>
-    <h1>Análise de Segurança Viária no Brasil</h1>
-    <p><strong>Fonte:</strong> PRF</p>
-    <p>A estrutura inicial do dashboard foi criada. O conteúdo analítico será publicado somente após a aprovação dos controles de qualidade de dados e da revisão estatística.</p>
-  </main>
-</body>
-</html>
+<body><main>
+  <span class="status">Dados validados</span>
+  <h1>Segurança Viária no Brasil</h1>
+  <p class="sub">Visão exploratória dos acidentes registrados pela Polícia Rodoviária Federal em 2025, agrupados por ocorrência. Os números descrevem o conjunto publicado; não representam, isoladamente, risco individual nem relações causais.</p>
+
+  <section class="grid" aria-label="Indicadores principais">
+    <div class="card"><div class="valor">72.529</div><div class="rotulo">ocorrências</div></div>
+    <div class="card"><div class="valor">6.043</div><div class="rotulo">mortos registrados</div></div>
+    <div class="card"><div class="valor">83.550</div><div class="rotulo">feridos registrados</div></div>
+    <div class="card"><div class="valor">20.018</div><div class="rotulo">feridos graves</div></div>
+    <div class="card"><div class="valor">144.922</div><div class="rotulo">veículos envolvidos</div></div>
+  </section>
+
+  <section class="chart"><h2>Ocorrências por mês</h2><div class="meses" aria-label="Série mensal de ocorrências">
+    <div class="mes"><div class="col" style="height:81.4%" title="Janeiro: 5.528"></div>Jan<br>5.528</div><div class="mes"><div class="col" style="height:77.9%" title="Fevereiro: 5.287"></div>Fev<br>5.287</div><div class="mes"><div class="col" style="height:87.8%" title="Março: 5.960"></div>Mar<br>5.960</div><div class="mes"><div class="col" style="height:85.2%" title="Abril: 5.786"></div>Abr<br>5.786</div><div class="mes"><div class="col" style="height:89.8%" title="Maio: 6.096"></div>Mai<br>6.096</div><div class="mes"><div class="col" style="height:90.2%" title="Junho: 6.122"></div>Jun<br>6.122</div><div class="mes"><div class="col" style="height:91.9%" title="Julho: 6.238"></div>Jul<br>6.238</div><div class="mes"><div class="col" style="height:92.0%" title="Agosto: 6.246"></div>Ago<br>6.246</div><div class="mes"><div class="col" style="height:88.6%" title="Setembro: 6.017"></div>Set<br>6.017</div><div class="mes"><div class="col" style="height:92.1%" title="Outubro: 6.252"></div>Out<br>6.252</div><div class="mes"><div class="col" style="height:91.5%" title="Novembro: 6.209"></div>Nov<br>6.209</div><div class="mes"><div class="col" style="height:100%" title="Dezembro: 6.788"></div>Dez<br>6.788</div>
+  </div></section>
+
+  <section class="chart"><h2>UFs com mais ocorrências registradas</h2><div class="bars">
+    <div class="bar"><span>MG</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>9.570</strong></div><div class="bar"><span>SC</span><div class="track"><div class="fill" style="width:85.5%"></div></div><strong>8.186</strong></div><div class="bar"><span>PR</span><div class="track"><div class="fill" style="width:79.7%"></div></div><strong>7.630</strong></div><div class="bar"><span>RJ</span><div class="track"><div class="fill" style="width:67.2%"></div></div><strong>6.428</strong></div><div class="bar"><span>RS</span><div class="track"><div class="fill" style="width:51.2%"></div></div><strong>4.899</strong></div><div class="bar"><span>SP</span><div class="track"><div class="fill" style="width:48.9%"></div></div><strong>4.683</strong></div><div class="bar"><span>BA</span><div class="track"><div class="fill" style="width:42.9%"></div></div><strong>4.108</strong></div><div class="bar"><span>GO</span><div class="track"><div class="fill" style="width:33.4%"></div></div><strong>3.196</strong></div><div class="bar"><span>PE</span><div class="track"><div class="fill" style="width:31.5%"></div></div><strong>3.013</strong></div><div class="bar"><span>ES</span><div class="track"><div class="fill" style="width:27.6%"></div></div><strong>2.642</strong></div>
+  </div><p class="nota">Comparação em números absolutos. Não controla extensão da malha federal, fluxo de veículos, população ou exposição ao tráfego; portanto, não deve ser interpretada como ranking de risco.</p></section>
+
+  <section class="chart"><h2>Causas mais registradas</h2><div class="bars">
+    <div class="bar"><span>Ausência de reação</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>11.469</strong></div><div class="bar"><span>Reação tardia/ineficiente</span><div class="track"><div class="fill" style="width:94.2%"></div></div><strong>10.799</strong></div><div class="bar"><span>Acesso à via sem observar</span><div class="track"><div class="fill" style="width:61.9%"></div></div><strong>7.097</strong></div><div class="bar"><span>Distância insuficiente</span><div class="track"><div class="fill" style="width:38.5%"></div></div><strong>4.413</strong></div><div class="bar"><span>Velocidade incompatível</span><div class="track"><div class="fill" style="width:35.6%"></div></div><strong>4.088</strong></div><div class="bar"><span>Mudança de faixa</span><div class="track"><div class="fill" style="width:35.0%"></div></div><strong>4.016</strong></div><div class="bar"><span>Ingestão de álcool</span><div class="track"><div class="fill" style="width:32.1%"></div></div><strong>3.685</strong></div>
+  </div><p class="nota">“Causa” corresponde à classificação registrada na base da PRF. Frequência observada não demonstra causalidade estatística nem estima o efeito independente de cada fator.</p></section>
+
+  <section class="card"><h2>Proveniência e qualidade</h2><p>Fonte: PRF, arquivo <strong>datatran2025.zip</strong>, acidentes de 2025 agrupados por ocorrência. O artefato processado contém 72.529 linhas e 30 colunas.</p><p>SHA-256: <code>52c8a631ac9d428bf845e2fa996b8c61f66b219f7014a61d292f9d95d186bb0f</code></p><p class="nota">Gate bloqueante aprovado: sem IDs duplicados ou ausentes, sem datas inválidas ou fora de 2025, sem colunas mínimas ausentes e sem contagens negativas, fracionárias ou não numéricas nas variáveis validadas. Ausências não bloqueantes observadas: classificação do acidente (1), regional (2), delegacia (22) e UOP (38).</p></section>
+
+  <p class="nota">Escopo atual: análise descritiva e exploratória. Modelagem não foi introduzida porque ainda não há pergunta preditiva formalmente justificada. Custo externo de IA/API do DataLab: USD 0,00.</p>
+</main></body></html>
